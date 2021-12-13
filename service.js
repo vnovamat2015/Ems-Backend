@@ -7,6 +7,7 @@ exports.bairroEncontrado = function(nomebairro){
 
 exports.todosBairros = function(){
     const resultado = dao.listaBairros()
+   // console.log('ESTOU SERVICE',resultado )
     return resultado
 }
 

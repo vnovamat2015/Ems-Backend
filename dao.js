@@ -3,7 +3,7 @@ const todosBairros = [{
     coordenadas: "29° 55' 04''S  51° 11' 01''W"
 },
 {
-    bairro: "NOVO",
+    bairro: "ABACAXI",
     coordenadas: "29° 55' 04''S  51° 11' 01''W"
 },
 {
@@ -11,7 +11,7 @@ const todosBairros = [{
     coordenadas: "45° 25' 04''S 54° 16' 11''W"
 },
 {
-    bairro: "GUAJUVIRAS",
+    bairro: "GUAJUVIRA",
     coordenadas: "48° 35' 04''S 56° 10' 21''W"
 },
 {    bairro: "NITEROI",

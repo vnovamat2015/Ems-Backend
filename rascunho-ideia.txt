@@ -1,0 +1,138 @@
+    banco de dados:
+[{
+
+     registrosChuva
+[{
+"sensor": 12345,
+"dataHora":"2021 -05-05 12:15",
+"statusChuva":true
+},{
+"sensor": 12345,
+"dataHora":"2021 -05-05 12:20",
+"statusChuva":true  
+},{
+"sensor": 12345,
+"dataHora":"2021 -05-05 12:25",
+"statusChuva":true
+},{
+"sensor": 12345,
+"dataHora":"2021 -05-05 12:30",
+"statusChuva":false
+},{
+"sensor": 12345,
+"dataHora":"2021 -05-05 12:35",
+"statusChuva":false
+},{
+"sensor": 12345,
+"dataHora":"2021 -05-05 12:40",
+"statusChuva":true
+}
+
+]
+
+
+
+sensores:
+    [{
+        "ID": 12345,
+        "coordenandas":29° 55' 04'' S 51° 11' 01''W,
+    },{
+          "ID": 34567,
+        "coordenandas":29° 55' 04'' S 51° 11' 01''W,  
+    },{  
+        "ID": 891011,
+        "coordenandas":29° 55' 04'' S 51° 11' 01''W,    
+    }]
+
+
+sensor na janela que envia dois tipos de requisições
+- começou a chover agora
+- parou de chover agora
+
+o sensor tem ID único
+
+o sensor vai fazer uma requisição HTTP POST/registro-Chuva
+body:
+{
+    "ID":12345,
+    "statusChuva": true
+}
+OU
+{
+     "ID":12345,
+    "statusChuva": false
+}
+
+
+// exemplo para trasmitir a idéia da variável passando pelo método da função
+Callback:
+const funcao1 = function(erro){
+    //código a ser executado ao terminar o processo demorado
+    if(erro){
+        // deu erro na execução do código demorado   
+    } else{
+        // deu tudo certo
+    }
+}
+
+const funcao2(callback){
+    try{
+        // executar um processo demorado
+        callback();
+    } catch(erro){
+        callback(erro);
+    }
+}
+
+
+
+funcao2(funcao1)
+
+funcao2( function(){
+    //código a ser executado ao terminar o processo demorado
+})
+.......
+/// registroChuvaController.js
+    app.post('/registro-Chuva',(req,res) =>{
+        const dadosSensor = req.body;
+
+        sensorDao(dadosSensor.ID, function(erro,sensor){
+            if(erro){
+                res.send(500);
+            }else{
+                const registroChuva = {
+                    "sensor": dadosSensor.ID,
+                    "dataHora": new Date(),
+                    "coordenandas": sensor.coordenandas,
+                    "statusChuva": dadosSensor.statusChuva
+                }
+      
+                 registrosChuvaDao.save(registroChuva, function(erro){
+                    if(erro){
+                         res.send(500)
+                    } else{
+                         res.send(200)
+                    }
+                 })
+                
+            }
+        })
+
+ });
+
+
+    //registrosChuvaDao.js
+    exports.save = function(registrosChuva,callback){
+        try{
+        // executar um processo demorado
+        callback();
+    } catch(erro){
+        callback(erro);
+    }
+ }
+
+
+
+
+
+]
