@@ -8,52 +8,38 @@ const cors = require('cors')
 
 app.use(cors())
 /////////////////////////////////////////////////////////////////////
-const placas = [
-  { id: 1, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W"},
-  { id: 2, coordenadas: " 69° 15' 02'' S 21° 41' 01'' W"},
-  { id: 3, coordenadas: " 19° 25' 02'' S 51° 31' 01'' W"},
-  { id: 4, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W"},
-  { id: 5, coordenadas: " 09° 55' 02'' S 22° 44' 01'' W"},
-  { id: 6, coordenadas: " 19° 25' 02'' S 51° 31' 01'' W"},
-  { id: 7, coordenadas: " 15° 25' 41'' S 12° 11' 34'' W"},
-  { id: 8, coordenadas: " 10° 09' 02'' S 29° 41' 01'' W"},
-  { id: 9, coordenadas: " 20° 15' 22'' S 13° 31' 45'' W"},
-  { id: 10, coordenadas: "45° 28' 27'' S 55° 33' 05'' W"},
-              ];
-
-const sensorPlacas = [
-  { id: 1, idPlaca: 3, idTipo: 1 },
-  { id: 2, idPlaca: 2, idTipo: 3 },
-  { id: 3, idPlaca: 1, idTipo: 2 },
-  { id: 4, idPlaca: 1, idTipo: 4 },
-  { id: 5, idPlaca: 7, idTipo: 1 },
-  { id: 6, idPlaca: 9, idTipo: 3 },
-  { id: 7, idPlaca: 8, idTipo: 2 },
-  { id: 8, idPlaca: 4, idTipo: 4 },
-  { id: 9, idPlaca: 6, idTipo: 3 },
-  { id: 10, idPlaca: 5, idTipo: 4 },
-  { id: 11, idPlaca: 7, idTipo: 3 },
-  { id: 12, idPlaca: 9, idTipo: 4 },
-  { id: 13, idPlaca: 8, idTipo: 1 },
-  { id: 14, idPlaca: 4, idTipo: 3 },
-  { id: 15, idPlaca: 1, idTipo: 1 },
-];
 const tipoSensor = [
-  { id: 1, nome: 'chuva', idSerie: '345,234,789,986,'}, 
-  { id: 2, nome: 'temperatura',idSerie:'980,321,673,108'}, 
-  { id: 3, nome: 'pressão',idSensor:'673,219,742,610,'}, 
-  { id: 4, nome: 'humidade',idSensor:'216,589,824,305'},
-                   ]
-const logSensores = [
-  { id: 1, dataHora: "2021 -05-05 12:15", idSensor: 1, valor: '1,0',idSerie: "345" },
-  { id: 2, dataHora: "2021 -05-05 12:15", idSensor: 2, valor: '27,8',idSerie:'980'},
-  { id: 3, dataHora: "2021 -05-05 12:15", idSensor: 2, valor: '12,3',idSerie:'321'},
-  { id: 4, dataHora: "2021 -05-05 12:15", idSensor: 4, valor: '65,0',idSerie:'216'},
-  { id: 5, dataHora: "2021 -05-05 12:15", idSensor: 3, valor: '983,9',idSerie:'742'},
-  { id: 6, dataHora: "2021 -05-05 12:15", idSensor: 4, valor: '78,0',idSerie:'589'},
-  { id: 7, dataHora: "2021 -05-05 12:15", idSensor: 3, valor: '1002,8',idSensor:'673'},
-  { id: 8, dataHora: "2021 -07-05 10:15", idSensor: 1, valor: '0,0',idSerie:'234'},
+  { id: 1, nome: 'chuva'}, 
+  { id: 2, nome: 'temperatura'}, 
+  { id: 3, nome: 'pressão'}, 
+  { id: 4, nome: 'humidade'}
 ];
+
+const sensores = [
+  { id: 1, idTipoSensor:1, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W",numSerie: '234'},
+  { id: 2, idTipoSensor:4, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W",numSerie: '234'},
+  { id: 3, idTipoSensor:1, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W",numSerie: '345'},
+  { id: 4, idTipoSensor:3, coordenadas: " 15° 52' 44'' S 22° 15' 30'' W",numSerie: '523'},
+  { id: 5, idTipoSensor:2, coordenadas: " 45° 25' 24'' S 10° 34' 56'' W",numSerie: '134'},
+  { id: 6, idTipoSensor:4, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W",numSerie: '234'},
+  { id: 7, idTipoSensor:1, coordenadas: " 40° 12' 41'' S 13° 03' 01'' W",numSerie: '245'},
+  { id: 8, idTipoSensor:3, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W",numSerie: '345'},
+  { id: 9, idTipoSensor:2, coordenadas: " 35° 52' 14'' S 11° 10' 01'' W",numSerie: '432'},
+  { id: 10, idTipoSensor:4, coordenadas:" 35° 52' 14'' S 11° 10' 01'' W",numSerie: '235'},
+                ];
+ 
+const logSensores = [
+  { id: 1, dataHora: "2021 -08-05 12:15", idSensor: 1, valor: '1,0'},
+  { id: 2, dataHora: "2021 -09-05 12:15", idSensor: 2, valor: '20,8'},
+  { id: 3, dataHora: "2021 -10-05 12:15", idSensor: 3, valor: '1012,3'},
+  { id: 4, dataHora: "2021 -10-05 12:15", idSensor: 4, valor: '65,0'},
+  { id: 5, dataHora: "2021 -08-05 12:15", idSensor: 1, valor: '1,0'},
+  { id: 6, dataHora: "2021 -09-05 12:15", idSensor: 4, valor: '90,8'},
+  { id: 7, dataHora: "2021 -10-05 12:15", idSensor: 3, valor: '984,3'},
+  { id: 8, dataHora: "2021 -10-05 12:15", idSensor: 4, valor: '65,0'},
+  { id: 9, dataHora: "2021 -08-05 12:15", idSensor: 1, valor: '1,0'},
+  { id: 10, dataHora: "2021 -09-05 12:15", idSensor:2, valor: '10,9'},
+           ];
 ////////////////////////////////////////////////////////////////////////////
     app.get('/bairros', (req, res) => {
       res.json(bairros);
